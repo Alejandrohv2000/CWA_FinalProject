@@ -1,0 +1,16 @@
+.checkout-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 16px;
+}
+
+.checkout-container form label {
+  font-weight: 600;
+}
+
+.checkout-summary {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 6px;
+  background: #f8f8f8;
+}

@@ -33,11 +33,27 @@ const removeFromCart = (id) => setCart(prev => ({ ...prev, items: prev.items.fil
 const updateQty = (id, qty) => setCart(prev => ({ ...prev, items: prev.items.map(i => i.id === id ? { ...i, qty } : i) }));
 
 
-const totalItems = cart.items.reduce((s, it) => s + it.qty, 0);
+const totalItems = (cart.items || []).reduce((s, it) => s + it.qty, 0);
+
+const items = cart.items || [];
+
+const subtotal = items.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+const clearCart = () => {
+  setCart(prev => ({ ...prev, items: [] }));
+};
 
 
 return (
-<CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQty, totalItems }}>
+<CartContext.Provider value={{
+  cart,
+  addToCart,
+  removeFromCart,
+  updateQty,
+  totalItems,
+  subtotal,
+  clearCart
+}}>    
 {children}
 </CartContext.Provider>
 );
